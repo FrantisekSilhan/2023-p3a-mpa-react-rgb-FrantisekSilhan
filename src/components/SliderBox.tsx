@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import Slider from "./StyledSlider"
 import { Context } from "../Providers/ContextProvider";
+import Styles from "./sliderBox.module.css"
 
 export const SliderBox = () => {
     const data = useContext(Context);
@@ -9,7 +10,7 @@ export const SliderBox = () => {
 
     return (
         <div>
-            <Slider
+            <Slider className={Styles["slider"]}
                 min={0}
                 max={255}
                 value={data.color.R.toString()}
@@ -23,7 +24,7 @@ export const SliderBox = () => {
                 backgroundColor={`rgb(${data.color.R}, ${data.color.G}, ${data.color.B})`}
                 thumbColor={`rgb(${data.color.R}, 0, 0)`}
             />
-            <Slider
+            <Slider className={Styles["slider"]}
                 min={0}
                 max={255}
                 value={data.color.G.toString()}
@@ -37,7 +38,7 @@ export const SliderBox = () => {
                 backgroundColor={`rgb(${data.color.R}, ${data.color.G}, ${data.color.B})`}
                 thumbColor={`rgb(0, ${data.color.G}, 0)`}
             />
-            <Slider
+            <Slider className={Styles["slider"]}
                 min={0}
                 max={255}
                 value={data.color.B.toString()}
