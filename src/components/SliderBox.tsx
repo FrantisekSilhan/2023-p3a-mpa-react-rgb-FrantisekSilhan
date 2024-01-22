@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import Slider from "./StyledSlider"
-import { Context } from "../Providers/ContextProvider";
+import { Context, colorChannel } from "../Providers/ContextProvider";
 import Styles from "./sliderBox.module.css"
 
 export const SliderBox = () => {
-    const data = useContext(Context);
+    const [data, dispatch] = useContext(Context);
 
     console.log(data);
 
@@ -15,10 +15,11 @@ export const SliderBox = () => {
                 max={255}
                 value={data.color.R.toString()}
                 onChange={(e) => {
-                    let colorValue = parseInt(e.currentTarget.value);
-                    console.log(colorValue);
-                    data.changeColor({
-                        R: colorValue, G: data.color.G, B: data.color.B
+                    const colorValue = parseInt(e.currentTarget.value);
+                    dispatch({
+                        type: "CHANGE_COLOR",
+                        value: colorValue,
+                        part: colorChannel.R
                     })
                 }}
                 backgroundColor={`rgb(${data.color.R}, ${data.color.G}, ${data.color.B})`}
@@ -29,10 +30,11 @@ export const SliderBox = () => {
                 max={255}
                 value={data.color.G.toString()}
                 onChange={(e) => {
-                    let colorValue = parseInt(e.currentTarget.value);
-                    console.log(colorValue);
-                    data.changeColor({
-                        R: data.color.R, G: colorValue, B: data.color.B
+                    const colorValue = parseInt(e.currentTarget.value);
+                    dispatch({
+                        type: "CHANGE_COLOR",
+                        value: colorValue,
+                        part: colorChannel.G
                     })
                 }}
                 backgroundColor={`rgb(${data.color.R}, ${data.color.G}, ${data.color.B})`}
@@ -43,10 +45,11 @@ export const SliderBox = () => {
                 max={255}
                 value={data.color.B.toString()}
                 onChange={(e) => {
-                    let colorValue = parseInt(e.currentTarget.value);
-                    console.log(colorValue);
-                    data.changeColor({
-                        R: data.color.R, G: data.color.G, B: colorValue
+                    const colorValue = parseInt(e.currentTarget.value);
+                    dispatch({
+                        type: "CHANGE_COLOR",
+                        value: colorValue,
+                        part: colorChannel.B
                     })
                 }}
                 backgroundColor={`rgb(${data.color.R}, ${data.color.G}, ${data.color.B})`}
