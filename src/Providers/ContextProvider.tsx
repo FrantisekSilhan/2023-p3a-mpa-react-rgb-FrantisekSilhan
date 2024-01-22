@@ -1,16 +1,7 @@
 import { PropsWithChildren, createContext, useReducer } from "react";
+import { actionType, colorChannel } from "./ReducerEnums";
 
 type colorType = { R: number, G: number, B: number };
-export enum colorChannel {
-    R = "R",
-    G = "G",
-    B = "B"
-}
-export enum actionType {
-    CHANGE_COLOR = "CHANGE_COLOR",
-    REPLACE_COLOR = "REPLACE_COLOR",
-    RESET_COLOR = "RESET_COLOR"
-}
 
 type stateType = { 
     color: colorType

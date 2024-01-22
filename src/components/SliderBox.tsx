@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import Slider from "./StyledSlider"
-import { Context, actionType, colorChannel } from "../Providers/ContextProvider";
+import { Context } from "../Providers/ContextProvider";
+import { actionType, colorChannel } from "../Providers/ReducerEnums";
 import Styles from "./sliderBox.module.css"
 
 export const SliderBox = () => {
