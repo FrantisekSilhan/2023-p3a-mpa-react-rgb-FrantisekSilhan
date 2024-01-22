@@ -7,8 +7,6 @@ import Styles from "./sliderBox.module.css"
 export const SliderBox = () => {
     const [data, dispatch] = useContext(Context);
 
-    console.log(data);
-
     return (
         <div>
             <Slider className={Styles["slider"]}

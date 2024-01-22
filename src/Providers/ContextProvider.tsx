@@ -24,17 +24,6 @@ const colorsReducer = (state: stateType, action: ColorsAction) => {
     switch(action.type) {
         case actionType.CHANGE_COLOR:
             newState.color[action.part] = action.value;
-            /*switch (action.part) {
-                case colorChannel.R:
-                    newState.color.R = action.value;
-                    return newState;
-                case colorChannel.G:
-                    newState.color.G = action.value;
-                    return newState;
-                case colorChannel.B:
-                    newState.color.B = action.value;
-                    return newState;
-            }*/
             return newState;
         case actionType.REPLACE_COLOR:
             return newState;
@@ -52,16 +41,7 @@ const initialState: stateType = {
 export const Context = createContext<[stateType, React.Dispatch<ColorsAction>]>([initialState, () => {}]);
 
 export const ContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
-    //const [color, setColor] = useState<colorType>({R: 0, G:0, B: 0});
     const reduce = useReducer(colorsReducer, initialState)
-
-    /*const changeColor = (color: colorType) => {
-        //setColor(color);
-        dispatch({
-            type: "REPLACE_COLOR",
-            value: color
-        });
-    };*/
     
     return (
         <Context.Provider value={reduce}>
