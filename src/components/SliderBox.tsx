@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Slider from "./StyledSlider"
-import { Context, colorChannel } from "../Providers/ContextProvider";
+import { Context, actionType, colorChannel } from "../Providers/ContextProvider";
 import Styles from "./sliderBox.module.css"
 
 export const SliderBox = () => {
@@ -17,7 +17,7 @@ export const SliderBox = () => {
                 onChange={(e) => {
                     const colorValue = parseInt(e.currentTarget.value);
                     dispatch({
-                        type: "CHANGE_COLOR",
+                        type: actionType.CHANGE_COLOR,
                         value: colorValue,
                         part: colorChannel.R
                     })
@@ -32,7 +32,7 @@ export const SliderBox = () => {
                 onChange={(e) => {
                     const colorValue = parseInt(e.currentTarget.value);
                     dispatch({
-                        type: "CHANGE_COLOR",
+                        type: actionType.CHANGE_COLOR,
                         value: colorValue,
                         part: colorChannel.G
                     })
@@ -47,7 +47,7 @@ export const SliderBox = () => {
                 onChange={(e) => {
                     const colorValue = parseInt(e.currentTarget.value);
                     dispatch({
-                        type: "CHANGE_COLOR",
+                        type: actionType.CHANGE_COLOR,
                         value: colorValue,
                         part: colorChannel.B
                     })

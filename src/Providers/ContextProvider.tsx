@@ -6,27 +6,32 @@ export enum colorChannel {
     G = "G",
     B = "B"
 }
+export enum actionType {
+    CHANGE_COLOR = "CHANGE_COLOR",
+    REPLACE_COLOR = "REPLACE_COLOR",
+    RESET_COLOR = "RESET_COLOR"
+}
 
 type stateType = { 
     color: colorType
 };
 
 type ColorsAction = {
-    type: "CHANGE_COLOR";
+    type: actionType.CHANGE_COLOR;
     value: number;
     part: colorChannel;
 } | {
-    type: "REPLACE_COLOR";
+    type: actionType.REPLACE_COLOR;
     value: colorType;
 } | {
-    type: "RESET_COLOR";
+    type: actionType.RESET_COLOR;
     part: colorChannel;
 };
 
 const colorsReducer = (state: stateType, action: ColorsAction) => {
     const newState = {...state};
     switch(action.type) {
-        case "CHANGE_COLOR":
+        case actionType.CHANGE_COLOR:
             newState.color[action.part] = action.value;
             /*switch (action.part) {
                 case colorChannel.R:
@@ -40,9 +45,9 @@ const colorsReducer = (state: stateType, action: ColorsAction) => {
                     return newState;
             }*/
             return newState;
-        case "REPLACE_COLOR":
+        case actionType.REPLACE_COLOR:
             return newState;
-        case "RESET_COLOR":
+        case actionType.RESET_COLOR:
             return {color: {R: 0, G: 0, B: 0}};
         default:
             return newState;
